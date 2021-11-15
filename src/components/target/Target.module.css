@@ -1,0 +1,74 @@
+.target {
+  border-radius: 100%;
+  background-color: crimson;
+  text-align: center;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.redb {
+  background-color: white;
+  border-radius: 100%;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+}
+
+.whiteb {
+  background-color: crimson;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
+  z-index: 3;
+}
+
+.shadow {
+  background-color: black;
+  width: 110px;
+  height: 110px;
+  opacity: 20%;
+  z-index: 5;
+  position: absolute;
+  left: 55px;
+}
+
+.shadow2 {
+  background-color: black;
+  width: 120px;
+  height: 120px;
+  opacity: 20%;
+  z-index: 5;
+  position: absolute;
+  left: 55px;
+  transform: skewX(340deg);
+}
+
+.shadownt {
+  background-color: rgb(255, 255, 255);
+  width: 110px;
+  height: 110px;
+  opacity: 20%;
+  z-index: 4;
+  position: absolute;
+  right: 55px;
+  transform: skewX(45deg);
+}
+
+.btn {
+  border: none;
+  background-color: inherit;
+}
+
+.btn:focus {
+  outline: none;
+}

@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.container {
+    background-color: #678983;
+    padding: 70px;
+    border-radius: 5%;
+    color: white;
+    border: 5px solid #78a19a
+}
+
+.caja {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.btn {   
+    border-radius: 5%;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin: 30px 0px -20px 0px;
+    background-color: #181D31;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 20px;
+}
+
+.btn:hover {
+    background-color: #394264;
+}
+
+.btn:focus { outline: none; }
+
+.titulo {
+    margin: -40px 0px 20px 0px;
+}
