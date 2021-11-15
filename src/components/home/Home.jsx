@@ -14,5 +14,5 @@ function Home() {
         </div>
     )
 }
-
+// russianVar = 'Привет'
 export default Home;
