@@ -1,4 +1,4 @@
-import { RESTA_CONTADOR, SUMA_CONTADOR } from "../actions/actionTypes";
+import { CONTADOR_RESET, SUMA_CONTADOR } from "../actions/actionTypes";
 
 
 const initial_state = {
@@ -12,9 +12,9 @@ const contadorReducer = (state = initial_state, action) => {
                 contador: state.contador + 1
             }
         }
-        case RESTA_CONTADOR: {
+        case CONTADOR_RESET: {
             return {
-                contador: state.contador -1
+                contador: state.contador * 0
             }
         }
         default:

@@ -1,8 +1,10 @@
 import s from './Target.module.css'
-import {useState} from 'react'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
-import { suma_contador_action } from '../../redux/actions/contadorAction';
+import { contador_reset, suma_contador_action } from '../../redux/actions/contadorAction';
+import { targetStateAction } from '../../redux/actions/targetStatusAction';
+import {Link} from 'react-router-dom'
+import Cronometro from '../cronometro/Cronometro';
 
 function Target() {
     //state de la diff
@@ -10,22 +12,48 @@ function Target() {
     //dispatch y state para el counter
     const dispatch = useDispatch();
     const contadorReducer = useSelector((state) => state.contadorReducer.contador)
-
-
-    const [stateButton, setStateButton] = useState(true);//estado del target
-    
-    
+    //estado del target    
+    const targetStatus = useSelector((state) => state.targetStatusReducer.shown)
+    //logica del juego
     function targetClick() {
-        if (stateButton === true) {
-            
-            setStateButton(false)
-            setTimeout(() => {
-                setStateButton(true)
-            }, diff);
+        if (targetStatus === 1) {
+            dispatch(targetStateAction(2))
+            dispatch(targetStateAction(1)) 
         } else {
-            setStateButton(true)
+            dispatch(targetStateAction(1))
         }
         dispatch(suma_contador_action())
+    }
+    //timerStatus
+    const tiempo = useSelector((state) => state.timerReducer.tiempo)
+    //timer
+    let segundos = tiempo
+    function cronometro() {
+        if (segundos > 0) {
+            segundos--
+        }
+        document.getElementById('segundero').innerHTML = `${segundos}`;        
+    }
+    if (targetStatus === 4) {
+        document.getElementById('segundero').innerHTML = `0`;
+    }
+    //boton para comenzar el juego y el timer TARGET PLAY
+    function targetPlay() {
+        dispatch(targetStateAction(1))
+        let timerId = setTimeout(() => {
+            dispatch(targetStateAction(4))
+        }, diff);
+        let invervalId = setInterval(cronometro, 1000)
+            setTimeout(() => {
+                clearInterval(invervalId)
+            }, tiempo * 1000);
+        dispatch(contador_reset())
+    }
+    //playAgain button
+    function playAgain() {
+        dispatch(targetStateAction(3))
+        dispatch(contador_reset())
+        document.getElementById('segundero').innerHTML = `${tiempo}`;
     }
 
     let valor1 = (function assignedTop() {
@@ -45,10 +73,55 @@ function Target() {
     
         return (
             <div>
-                <span>
-                Counter: {contadorReducer} 
-                </span>
-                {stateButton === true
+                <Cronometro/>
+                {targetStatus === 1?
+                    <span id='target'
+                    style={{
+                        position: 'absolute',
+                        top: valor1 + 'px',
+                        left: valor2 + 'px',
+                        }}>
+                        
+                    <button className={s.btn} onClick={() => targetClick()}>
+                        <span className={s.target}>
+                            <span className={s.shadow}></span>
+                            <span className={s.shadow2}></span>
+                            <span className={s.shadownt}></span>
+                                <span className={s.redb}>
+                                    <span className={s.whiteb}></span>
+                                </span>
+                        </span>
+                    </button>
+                    </span>
+                    : targetStatus === 4?//status GAMEOVER --------------
+                    <span>
+                        <span className={s.gameOverContainer}>
+                            <span className={s.gameOverBox}>
+                                    <h1 className={s.gameOverContent}>GAME OVER</h1>
+                                    <Link to='/'><button>Change difficulty</button></Link>
+                                    <h2 className={s.gameOverContent}>Score: {contadorReducer}</h2>
+                                <button className={s.gameOverContent} style={{marginBottom: '10px'}} onClick={() => playAgain()}>Play Again</button>
+                            </span>
+                        </span>
+                    </span>
+                        
+                        ://status 3 default //targetplay------------------
+                        <span className={s.gameOverContainer}>
+                            <span>
+                                <button className={s.playBtn} onClick={() => targetPlay()}>
+                                    <span className={s.target}>
+                                        <span className={s.shadow}></span>
+                                        <span className={s.shadow2}></span>
+                                        <span className={s.shadownt}></span>
+                                        <span className={s.redb}>
+                                            <span className={s.whiteb}></span>
+                                        </span>
+                                    </span>
+                                </button>
+                            </span>
+                        </span>
+                    }
+                {/* {targetStatus === true
                     ?<span id='target'
                     style={{
                         position: 'absolute',
@@ -67,7 +140,16 @@ function Target() {
                         </span>
                     </button>
                     </span>
-                : <span></span>}
+                    : <span>
+                        <span className={s.gameOverContainer}>
+                            <span className={s.gameOverBox}>
+                                <h1 className={s.gameOverContent}>GAME OVER</h1>
+                                <h2 className={s.gameOverContent}>Score: {contadorReducer}</h2>
+                                <button className={s.gameOverContent} style={{marginBottom: '10px'}} onClick={() => dispatch(targetStateAction(true), dispatch(contador_reset()))}>Play Again</button>
+                            </span>
+                        </span>
+                    </span>} */}
+                
                 
 
                 

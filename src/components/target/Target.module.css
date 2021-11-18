@@ -72,3 +72,26 @@
 .btn:focus {
   outline: none;
 }
+
+.gameOverContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.gameOverBox {
+  background-color: red;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gameOverContent {
+  padding: 10px;
+}
+
+.playBtn {
+  padding: 50px;
+  border: none;
+  background: inherit;
+  color: black;
+}

@@ -1,4 +1,4 @@
-import { RESTA_CONTADOR, SUMA_CONTADOR } from "./actionTypes"
+import { CONTADOR_RESET, SUMA_CONTADOR } from "./actionTypes"
 
 
 export const suma_contador_action = () => {
@@ -7,8 +7,8 @@ export const suma_contador_action = () => {
     }
 }
 
-export const resta_contador_action = () => {
+export const contador_reset = () => {
     return {
-        type: RESTA_CONTADOR
+        type: CONTADOR_RESET
     }
 }
