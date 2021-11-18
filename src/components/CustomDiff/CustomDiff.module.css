@@ -1,0 +1,30 @@
+.boxMain {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputTxt {
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.btn {
+    margin-bottom: 55px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: none;
+    background-color: rgb(224, 224, 224);
+    cursor: pointer;
+}
+.btn:hover {
+    background-color: rgb(161, 161, 161)
+}
+
+.untar {
+    user-select: none;
+}

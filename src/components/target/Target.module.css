@@ -79,10 +79,38 @@
 }
 
 .gameOverBox {
-  background-color: red;
+  background-color: #FFE652;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border-radius: 3px;
+  box-shadow:
+  inset 0 -3em 3em #FFE652,
+        0 0  0 2px #FFE652,
+        0.3em 0.3em 1em #000000;
+  padding: 40px 40px;
+  }
+        
+
+.gameOverBoxShadow {
+  background-color: black;
+  width: 120px;
+  height: 120px;
+  opacity: 20%;
+  position: absolute;
+  transform: skewX(340deg);
+}
+
+.playAgainBtn {
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #71DFE7;
+  border: 2px solid #b0e2e6;
+  border-radius: 10px;
+}
+
+.playAgainBtn:hover {
+  background-color: #b0e2e6;
 }
 
 .gameOverContent {
@@ -95,3 +123,39 @@
   background: inherit;
   color: black;
 }
+
+.startBtn {
+  position: absolute;
+  margin-left: 60px;
+  margin-top: 10px;
+  z-index: 6;
+  user-select: none;
+}
+
+.homeBtn {
+  padding: 10px;
+  background-color: khaki;
+  font-weight: bolder;
+  font-size: 15px;
+  border: 1px solid rgb(218, 213, 176);
+  cursor: pointer;
+  border-radius: 5px;
+  position: absolute;  
+  user-select: none;
+}
+
+.homeBtn:hover {
+  background-color: rgb(226, 214, 105);
+}
+
+.changeDiffBtn {
+  background-color: #e9fffd;
+  border: 1px solid #9eb1b3;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.changeDiffBtn:hover {
+  background-color: #bacecc;
+}
+

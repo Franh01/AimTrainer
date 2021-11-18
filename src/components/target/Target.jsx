@@ -5,6 +5,8 @@ import { contador_reset, suma_contador_action } from '../../redux/actions/contad
 import { targetStateAction } from '../../redux/actions/targetStatusAction';
 import {Link} from 'react-router-dom'
 import Cronometro from '../cronometro/Cronometro';
+import { definirTiempo } from '../../redux/actions/timerAction';
+import { diffButtonAction } from '../../redux/actions/diffAction';
 
 function Target() {
     //state de la diff
@@ -40,7 +42,7 @@ function Target() {
     //boton para comenzar el juego y el timer TARGET PLAY
     function targetPlay() {
         dispatch(targetStateAction(1))
-        let timerId = setTimeout(() => {
+        setTimeout(() => {
             dispatch(targetStateAction(4))
         }, diff);
         let invervalId = setInterval(cronometro, 1000)
@@ -70,10 +72,20 @@ function Target() {
         return valor2;
     })();
 
+    //toHome 
+    function toHome() {
+        dispatch(definirTiempo(60))
+        dispatch(diffButtonAction(60000))
+        setTimeout(() => {
+            window.location.reload()
+        }, 500);
+        
+    }
     
         return (
             <div>
-                <Cronometro/>
+                <Link to='/'><button className={s.homeBtn} onClick={() => toHome()}>Home</button></Link>
+                <Cronometro />
                 {targetStatus === 1?
                     <span id='target'
                     style={{
@@ -96,11 +108,11 @@ function Target() {
                     : targetStatus === 4?//status GAMEOVER --------------
                     <span>
                         <span className={s.gameOverContainer}>
-                            <span className={s.gameOverBox}>
+                                <span className={s.gameOverBox}>
                                     <h1 className={s.gameOverContent}>GAME OVER</h1>
-                                    <Link to='/'><button>Change difficulty</button></Link>
+                                    <Link to='/'><button className={s.changeDiffBtn}>Change difficulty</button></Link>
                                     <h2 className={s.gameOverContent}>Score: {contadorReducer}</h2>
-                                <button className={s.gameOverContent} style={{marginBottom: '10px'}} onClick={() => playAgain()}>Play Again</button>
+                                <button className={s.playAgainBtn} onClick={() => playAgain()}>Play Again</button>
                             </span>
                         </span>
                     </span>
@@ -108,6 +120,17 @@ function Target() {
                         ://status 3 default //targetplay------------------
                         <span className={s.gameOverContainer}>
                             <span>
+                                <span
+                                    style={{
+                                        position: 'absolute',
+                                        marginLeft: '78px',
+                                        marginTop: '-20px'
+                                    }}
+                                >
+                                    
+                                </span>
+                                <span>
+                                <h1 className={s.startBtn}>START</h1></span>
                                 <button className={s.playBtn} onClick={() => targetPlay()}>
                                     <span className={s.target}>
                                         <span className={s.shadow}></span>

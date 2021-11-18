@@ -1,16 +1,12 @@
-import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-// import { activarCronometro, definirTiempo } from "../../redux/actions/timerAction";
+import s from './Cronometro.module.css'
+
 
 function Cronometro() {
-    
     const tiempo = useSelector((state) => state.timerReducer.tiempo)
-    // const dispatch = useDispatch();
-    
-
     return (
         <div>
-            <h1 id='segundero'>00</h1>
+            <h1 id='segundero' style={{userSelect: 'none'}} className={s.cronometro}>{tiempo}</h1>
         </div>
     )
 }
