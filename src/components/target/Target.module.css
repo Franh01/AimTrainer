@@ -115,6 +115,7 @@
 
 .gameOverContent {
   padding: 10px;
+  user-select: none;
 }
 
 .playBtn {
