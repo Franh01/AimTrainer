@@ -5,10 +5,9 @@ export default function Switch() {
     let value = 5
     
     function modoOsc() {
-        console.log('switch')
         if (value === 5) {
             value = 2
-            body.style.background = '#1a18138f'
+            body.style.background = '#2E4C6D'//dark btw
         } else {
             value = 5
             body.style.background = '#f3ecd48f'

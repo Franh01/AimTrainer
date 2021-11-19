@@ -3,8 +3,8 @@ import React from 'react';
 import Home from './components/home/Home'
 import {Routes, Route} from 'react-router-dom'
 import Target from './components/target/Target';
-import Cronometro from './components/cronometro/Cronometro';
 import Switch from './components/switchOscuroClaro/Switch';
+import SurvivalGameMode from './components/survivalGameMode/SurvivalGameMode'
 
 
 function App() {
@@ -12,9 +12,9 @@ function App() {
     <div>
     <Switch/>
       <Routes>
-        <Route path='/timer' element={<Cronometro/>}/>
+        <Route path='/survival' element={<SurvivalGameMode/>}></Route>
         <Route path='/' element={<Home/>}></Route>
-        <Route path='/game' element={<Target/>}></Route>
+        <Route path='/timer' element={<Target/>}></Route>
       </Routes>
       </div>
   );

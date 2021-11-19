@@ -1,4 +1,4 @@
-import s from './Target.module.css'
+import s from './SurvivalGameMode.module.css'
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { contador_reset, suma_contador_action } from '../../redux/actions/contadorAction';
@@ -18,6 +18,8 @@ function Target() {
     const targetStatus = useSelector((state) => state.targetStatusReducer.shown)
     //logica del juego
     function targetClick() {
+        //encontrar la forma de resetar el timeout en cada click, podria usar el timer para que cada click lo reinicie
+        //e usar la diff para setear el valor, si llega a 0 status 4
         if (targetStatus === 1) {
             dispatch(targetStateAction(2))
             dispatch(targetStateAction(1)) 
@@ -36,8 +38,8 @@ function Target() {
         }
         document.getElementById('segundero').innerHTML = `${segundos}`;        
     }
-    if (targetStatus === 4) {
-        document.getElementById('segundero').innerHTML = `0`;
+    if (tiempo === 0) {
+        dispatch(targetStateAction(4))
     }
     //boton para comenzar el juego y el timer TARGET PLAY
     function targetPlay() {
@@ -45,17 +47,13 @@ function Target() {
         setTimeout(() => {
             dispatch(targetStateAction(4))
         }, diff);
-        let invervalId = setInterval(cronometro, 1000)
-            setTimeout(() => {
-                clearInterval(invervalId)
-            }, tiempo * 1000);
         dispatch(contador_reset())
+        cronometro()
     }
     //playAgain button
     function playAgain() {
         dispatch(targetStateAction(3))
         dispatch(contador_reset())
-        document.getElementById('segundero').innerHTML = `${tiempo}`;
     }
 
     let valor1 = (function assignedTop() {
@@ -84,8 +82,8 @@ function Target() {
     
         return (
             <div>
-                <Link to='/'><button className={s.homeBtn} onClick={() => toHome()}>Home</button></Link>
                 <Cronometro/>
+                <Link to='/'><button className={s.homeBtn} onClick={() => toHome()}>Home</button></Link>
                 {targetStatus === 1?
                     <span id='target'
                     style={{

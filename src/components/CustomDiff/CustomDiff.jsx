@@ -22,16 +22,24 @@ export default function CustomDiff() {
 
     return (
         <div>
-            <span className={s.boxMain}>
-                <h3 class={s.untar}>Custom Difficulty</h3>
-                <input type='number' placeholder='Seconds...' className={s.inputTxt} value={input}
-                    onChange={
-                        (event) => {
-                        setInput(event.target.value)
+            <span className={s.customDiffFlex}>
+                <span className={s.gCustomDiffTitle}>
+                    <h3 class={s.untar}>Custom Difficulty</h3>
+                </span>
+                
+                <span className={s.gCustonDiffInput}>
+                    <input type='number' placeholder='Seconds...' className={s.inputTxt} value={input}
+                        onChange={
+                            (event) => {
+                            setInput(event.target.value)
+                        }
                     }
-                }
-                ></input>
-                <button className={s.btn} onClick={() => actualizar()}>SET</button>
+                    ></input>
+                </span>
+
+                <span className={s.gSetButton}>
+                    <button className={s.btn} onClick={() => actualizar()}>SET</button>
+                </span>
             </span>
         </div>
     )

@@ -1,26 +1,98 @@
-.main {
+.uMainContainer {
   display: flex;
-  flex-direction: row;
   justify-content: center;
 }
 
-.container {
+.rMainContainer {
   background-color: #678983;
   padding: 70px;
   border-radius: 5%;
   color: white;
-  border: 5px solid #78a19a;
-  box-shadow:
-  inset 0 -3em 3em #678983,
-        0 0  0 2px #78a19a,
-        0.3em 0.3em 1em #000000;
-}
-
-.caja {
+  border: 1px solid #78a19a;
+  box-shadow: inset 0 -3em 3em #678983,
+      0 0  0 2px #78a19a,
+      0.3em 0.3em 1em #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 300px;
 }
+
+.yTitleContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.yGameModeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.gGameModeButtonsContainer {
+  display: flex;
+  flex: 1;
+}
+
+.yDiffButtonsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: space-around;
+  flex: 1;
+}
+
+.gGameModeButtons {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 20px;
+}
+
+.yCustomDiffContainer {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.yTimerContainer {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+
+.gTimer {
+  margin: 1px 1px;
+}
+
+.yPlayButtonContainer {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  margin-top: -10px;
+}
+
+.yLinksContainer {
+  margin: -52px 17px;
+  position: absolute;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .btn {
   border-radius: 5%;
@@ -68,14 +140,23 @@
   outline: none;
 }
 
-.customDiffBox {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
+.gitHub {
+  max-width: 40px;
 }
 
-.cronometro {
-  margin: 283px 60px 0px 0px;
-  position: absolute;
+
+.gameModeBtns {
+  padding: 10px 20px;
+  border: none;
+  margin: 0px 3px 0px 3px;
+  min-width: 84px;
 }
+
+.gameModeBtns:focus {
+  background-color: rgb(248, 246, 131);
+  border: none;
+  outline: none;
+}
+
+
+
