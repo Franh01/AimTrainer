@@ -53,6 +53,7 @@ function Home() {
     //----------------------------------------
     //estado del modo de juego
     const gameState = useSelector((state) => state.gameStateReducer.gameState)
+    //---------------------------------------- 
     return (
         <div className={s.uMainContainer}>
             <span className={s.realMainContainer}>
@@ -84,9 +85,9 @@ function Home() {
                     <span className={s.yDiffButtonsContainer}>
 
                         <span className={s.gDiffButtons}>
-                            <button autoFocus className={s.botones} onClick={() => easy()}>Easy</button>
-                            <button className={s.botones} onClick={() => normal()}>Normal</button>
-                            <button className={s.botones} onClick={() => hard()}>Hard</button>
+                            <button className={s.botones} onClick={() => easy()} id='easyButton'>Easy</button>
+                            <button className={s.botones} onClick={() => normal()} id='normalButton'>Normal</button>
+                            <button className={s.botones} onClick={() => hard()} id='hardButton'>Hard</button>
                         </span>
 
                     </span>
@@ -130,6 +131,7 @@ function Home() {
                     </span>
             </span>
         </div>
-    )
+    )    
 }
+
 export default Home;

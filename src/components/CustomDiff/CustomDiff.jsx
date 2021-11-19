@@ -24,7 +24,7 @@ export default function CustomDiff() {
         <div>
             <span className={s.customDiffFlex}>
                 <span className={s.gCustomDiffTitle}>
-                    <h3 class={s.untar}>Custom Difficulty</h3>
+                    <h3 className={s.untar}>Custom Difficulty</h3>
                 </span>
                 
                 <span className={s.gCustonDiffInput}>

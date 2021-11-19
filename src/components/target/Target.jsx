@@ -7,6 +7,7 @@ import {Link} from 'react-router-dom'
 import Cronometro from '../cronometro/Cronometro';
 import { definirTiempo } from '../../redux/actions/timerAction';
 import { diffButtonAction } from '../../redux/actions/diffAction';
+import { useState } from 'react';
 
 function Target() {
     //state de la diff
@@ -39,16 +40,24 @@ function Target() {
     if (targetStatus === 4) {
         document.getElementById('segundero').innerHTML = `0`;
     }
+    //state para interval
+    const [intervalState, setIntervalState] = useState('')
+    //state para timeout
+    const [timeOutState, setTimeOutState] = useState('')
+    const [timeOutState2, setTimeOutState2] = useState('')
     //boton para comenzar el juego y el timer TARGET PLAY
     function targetPlay() {
         dispatch(targetStateAction(1))
-        setTimeout(() => {
+        let timeOutId = setTimeout(() => {
             dispatch(targetStateAction(4))
         }, diff);
+        setTimeOutState(timeOutId)
         let invervalId = setInterval(cronometro, 1000)
-            setTimeout(() => {
-                clearInterval(invervalId)
-            }, tiempo * 1000);
+        setIntervalState(invervalId)        
+        let timeOutId2 = setTimeout(() => {
+            clearInterval(invervalId)
+        }, tiempo * 1000);
+        setTimeOutState2(timeOutId2)        
         dispatch(contador_reset())
     }
     //playAgain button
@@ -74,11 +83,14 @@ function Target() {
 
     //toHome 
     function toHome() {
-        dispatch(definirTiempo(60))
-        dispatch(diffButtonAction(60000))
-        setTimeout(() => {
-            window.location.reload()
-        }, 500);
+        dispatch(definirTiempo(diff / 1000))
+        dispatch(diffButtonAction(diff))
+        clearInterval(intervalState)
+        clearTimeout(timeOutState)
+        clearTimeout(timeOutState2)
+        // setTimeout(() => {
+        //     window.location.reload()
+        // }, 500);
         
     }
     

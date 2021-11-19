@@ -44,6 +44,7 @@ function Target() {
     //boton para comenzar el juego y el timer TARGET PLAY
     function targetPlay() {
         dispatch(targetStateAction(1))
+
         setTimeout(() => {
             dispatch(targetStateAction(4))
         }, diff);
@@ -55,7 +56,11 @@ function Target() {
         dispatch(targetStateAction(3))
         dispatch(contador_reset())
     }
-
+    //sin diff
+    if (tiempo === 0) {
+        return alert('Please select difficulty')
+    }
+    //
     let valor1 = (function assignedTop() {
         let valor1 = Math.random() * 50 * 20;
         if (valor1 > 820) {
