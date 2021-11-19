@@ -84,8 +84,10 @@ function Target() {
     
         return (
             <div>
+                <span className={s.pipirulo}>
                 <Link to='/'><button className={s.homeBtn} onClick={() => toHome()}>Home</button></Link>
                 <Cronometro/>
+                </span>
                 {targetStatus === 1?
                     <span id='target'
                     style={{
