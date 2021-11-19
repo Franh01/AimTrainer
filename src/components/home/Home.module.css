@@ -1,6 +1,13 @@
+.tMainContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .uMainContainer {
   display: flex;
   justify-content: center;
+  margin: 101px 0px;
 }
 
 .rMainContainer {

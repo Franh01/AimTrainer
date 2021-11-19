@@ -55,80 +55,82 @@ function Home() {
     const gameState = useSelector((state) => state.gameStateReducer.gameState)
     //---------------------------------------- 
     return (
-        <div className={s.uMainContainer}>
-            <span className={s.realMainContainer}>
-                <span className={s.rMainContainer}>
+        <div className={s.tMainContainer}>
+            <span className={s.uMainContainer}>
+                <span className={s.realMainContainer}>
+                    <span className={s.rMainContainer}>
 
-                    <span className={s.yTitleContainer}>
+                        <span className={s.yTitleContainer}>
 
-                        <span className={s.gTitle} id='title'>
-                            <h1 className={s.titulo}>Aim Trainer</h1>
+                            <span className={s.gTitle} id='title'>
+                                <h1 className={s.titulo}>Aim Trainer</h1>
+                            </span>
+                            
+                        </span>
+
+                        <span className={s.yGameModeContainer}>
+
+                            <span className={s.gGameModeTitle} id='gameModeTitle'>
+                                <h3>Game mode:</h3>
+                            </span>
+
+                            <span className={s.gGameModeButtonsContainer}>
+                                <span className={s.gGameModeButtons}>
+                                    <button className={s.gameModeBtns} onClick={() => survival()}>Survival</button>
+                                    <button className={s.gameModeBtns} onClick={() => timer()}>Timer</button>
+                                </span>
+                            </span>
+
+                        </span>
+
+                        <span className={s.yDiffButtonsContainer}>
+
+                            <span className={s.gDiffButtons}>
+                                <button className={s.botones} onClick={() => easy()} id='easyButton'>Easy</button>
+                                <button className={s.botones} onClick={() => normal()} id='normalButton'>Normal</button>
+                                <button className={s.botones} onClick={() => hard()} id='hardButton'>Hard</button>
+                            </span>
+
+                        </span>
+
+                        
+                        {   gameState === 'timer' ?
+                            <span className={s.yCustomDiffContainer}>
+
+                                <span className={s.gCustomDiff}>
+                                    <CustomDiff />
+                                </span>
+                            
+                            </span>:<span></span>
+                        }
+                        {   gameState === 'timer' ?
+                            <span className={s.yTimerContainer}>
+                                <span className={s.gTimer}>
+                                    <h1>{tiempo}</h1>
+                                </span>
+                            </span>:<span></span>
+                        }
+
+                        <span className={s.yPlayButtonContainer}>
+
+                            <span className={s.gPlayButton}>
+                                <Link to={`/${gameState}`} className={s.linkDeco}>
+                                    <button className={s.btn} onClick={() => dispatch(targetStateAction(3))}>PLAY</button>
+                                </Link>
+                            </span>
+
                         </span>
                         
-                    </span>
-
-                    <span className={s.yGameModeContainer}>
-
-                        <span className={s.gGameModeTitle} id='gameModeTitle'>
-                            <h3>Game mode:</h3>
-                        </span>
-
-                        <span className={s.gGameModeButtonsContainer}>
-                            <span className={s.gGameModeButtons}>
-                                <button className={s.gameModeBtns} onClick={() => survival()}>Survival</button>
-                                <button className={s.gameModeBtns} onClick={() => timer()}>Timer</button>
-                            </span>
-                        </span>
-
-                    </span>
-
-                    <span className={s.yDiffButtonsContainer}>
-
-                        <span className={s.gDiffButtons}>
-                            <button className={s.botones} onClick={() => easy()} id='easyButton'>Easy</button>
-                            <button className={s.botones} onClick={() => normal()} id='normalButton'>Normal</button>
-                            <button className={s.botones} onClick={() => hard()} id='hardButton'>Hard</button>
-                        </span>
-
-                    </span>
-
-                    
-                    {   gameState === 'timer' ?
-                        <span className={s.yCustomDiffContainer}>
-
-                            <span className={s.gCustomDiff}>
-                                <CustomDiff />
-                            </span>
                         
-                        </span>:<span></span>
-                    }
-                    {   gameState === 'timer' ?
-                        <span className={s.yTimerContainer}>
-                            <span className={s.gTimer}>
-                                <h1>{tiempo}</h1>
-                            </span>
-                        </span>:<span></span>
-                    }
-
-                    <span className={s.yPlayButtonContainer}>
-
-                        <span className={s.gPlayButton}>
-                            <Link to={`/${gameState}`} className={s.linkDeco}>
-                                <button className={s.btn} onClick={() => dispatch(targetStateAction(3))}>PLAY</button>
-                            </Link>
-                        </span>
-
                     </span>
-                    
-                    
+                        <span className={s.yLinksContainer}>
+
+                            <span className={s.gGitHub}>
+                                <a href='https://github.com/Franh01' target='_blank' rel='noreferrer'><img src={gitImg} className={s.gitHub} alt='github-img'/></a>
+                            </span>
+                            
+                        </span>
                 </span>
-                    <span className={s.yLinksContainer}>
-
-                        <span className={s.gGitHub}>
-                            <a href='https://github.com/Franh01' target='_blank' rel='noreferrer'><img src={gitImg} className={s.gitHub} alt='github-img'/></a>
-                        </span>
-                        
-                    </span>
             </span>
         </div>
     )    
