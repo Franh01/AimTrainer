@@ -135,7 +135,7 @@
   border: none;
   cursor: pointer;
   border-radius: 4%;
-  min-width: 65px;
+  min-width: 84px;
 }
 
 .botones:hover {
@@ -157,6 +157,7 @@
   border: none;
   margin: 0px 3px 0px 3px;
   min-width: 84px;
+  background-color: #efefef;
 }
 
 .gameModeBtns:focus {

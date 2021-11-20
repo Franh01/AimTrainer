@@ -3,10 +3,9 @@ import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { contador_reset, suma_contador_action } from '../../redux/actions/contadorAction';
 import { targetStateAction } from '../../redux/actions/targetStatusAction';
-import {Link} from 'react-router-dom'
-import Cronometro from '../cronometro/Cronometro';
-import { definirTiempo } from '../../redux/actions/timerAction';
+import { Link } from 'react-router-dom';
 import { diffButtonAction } from '../../redux/actions/diffAction';
+import { useState } from 'react';
 
 function Target() {
     //state de la diff
@@ -16,51 +15,40 @@ function Target() {
     const contadorReducer = useSelector((state) => state.contadorReducer.contador)
     //estado del target    
     const targetStatus = useSelector((state) => state.targetStatusReducer.shown)
+    //
+    const [contador, setContador] = useState('')
+    //
     //logica del juego
     function targetClick() {
-        //encontrar la forma de resetar el timeout en cada click, podria usar el timer para que cada click lo reinicie
-        //e usar la diff para setear el valor, si llega a 0 status 4
+        
         if (targetStatus === 1) {
             dispatch(targetStateAction(2))
-            dispatch(targetStateAction(1)) 
+            dispatch(targetStateAction(1))
+            //aca deberia reiniciar el contador
+            clearTimeout(contador)
+            //aca deberia empezar el contador con la diff
+            let id = setTimeout(() => {
+                dispatch(targetStateAction(4))
+            }, diff);
+            setContador(id)
         } else {
             dispatch(targetStateAction(1))
         }
         dispatch(suma_contador_action())
     }
-    //timerStatus
-    const tiempo = useSelector((state) => state.timerReducer.tiempo)
-    //timer
-    let segundos = tiempo
-    function cronometro() {
-        if (segundos > 0) {
-            segundos--
-        }
-        document.getElementById('segundero').innerHTML = `${segundos}`;        
-    }
-    if (tiempo === 0) {
-        dispatch(targetStateAction(4))
-    }
+    
     //boton para comenzar el juego y el timer TARGET PLAY
     function targetPlay() {
         dispatch(targetStateAction(1))
-
-        setTimeout(() => {
-            dispatch(targetStateAction(4))
-        }, diff);
         dispatch(contador_reset())
-        cronometro()
     }
     //playAgain button
     function playAgain() {
         dispatch(targetStateAction(3))
         dispatch(contador_reset())
+        // document.getElementById('segundero').innerHTML = `${tiempo}`;
     }
-    //sin diff
-    if (tiempo === 0) {
-        return alert('Please select difficulty')
-    }
-    //
+
     let valor1 = (function assignedTop() {
         let valor1 = Math.random() * 50 * 20;
         if (valor1 > 820) {
@@ -77,18 +65,22 @@ function Target() {
 
     //toHome 
     function toHome() {
-        dispatch(definirTiempo(60))
-        dispatch(diffButtonAction(60000))
-        setTimeout(() => {
-            window.location.reload()
-        }, 500);
-        
+        dispatch(diffButtonAction(diff))
     }
+    //switch colors
+    // const switchColors = useSelector((state) => state.switchReducer.theme)  undefined????
     
         return (
             <div>
-                <Cronometro/>
-                <Link to='/'><button className={s.homeBtn} onClick={() => toHome()}>Home</button></Link>
+                <span className={s.pipirulo}>
+                    <Link to='/'><button className={s.homeBtn} onClick={() => toHome()}>Home</button></Link>
+                    <h1 style={{
+                        position: 'absolute',
+                        marginLeft: '20px',
+                        marginTop: '40px',
+                        color: '#00ad31'
+                    }}>{contadorReducer}</h1>
+                </span>
                 {targetStatus === 1?
                     <span id='target'
                     style={{

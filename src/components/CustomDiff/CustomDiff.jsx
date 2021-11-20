@@ -12,12 +12,12 @@ export default function CustomDiff() {
     const dispatch = useDispatch();
 
     function actualizar() {
-        if (input < 0) {
+        if (input < 0 || input === '' || input.includes('e') || input === '.') {
             setInput('');
-            return alert('No flashees papanatas')
+            return alert('No flashees papanatas');
         } 
-        dispatch(diffButtonAction(input * 1000))
-        dispatch(definirTiempo(input))
+        dispatch(diffButtonAction(Math.round(input) * 1000))
+        dispatch(definirTiempo(Math.round(input)))
     }
 
     return (
@@ -27,7 +27,7 @@ export default function CustomDiff() {
                     <h3 className={s.untar}>Custom Difficulty</h3>
                 </span>
                 
-                <span className={s.gCustonDiffInput}>
+                <span className={s.gCustomDiffInput}>
                     <input type='number' placeholder='Seconds...' className={s.inputTxt} value={input}
                         onChange={
                             (event) => {

@@ -4,6 +4,7 @@ import contadorReducer from './contadorReducer';
 import targetStatusReducer from './targetStatusReducer'
 import timerReducer from "./timerReducer";
 import gameStateReducer from './gameStateReducer'
+import switchReducer from './switchReducer'
 
 
 const rootReducers = combineReducers({
@@ -11,7 +12,8 @@ const rootReducers = combineReducers({
     contadorReducer,
     targetStatusReducer,
     timerReducer,
-    gameStateReducer
+    gameStateReducer,
+    switchReducer
 })
 
 export default rootReducers;

@@ -1,7 +1,7 @@
 import { DIFF_BUTTON_ACTION } from "../actions/actionTypes";
 
 const initial_state = {
-    diffSegs: 60000
+    diffSegs: 0
 };
 
 const difficulty = (state = initial_state, action) => {

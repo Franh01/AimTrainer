@@ -8,6 +8,7 @@ import CustomDiff from '../CustomDiff/CustomDiff';
 import gitImg from '../../img/github-icon.png'
 import { setGameState } from '../../redux/actions/gameStateAction';
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 
 function Home() {
@@ -41,8 +42,8 @@ function Home() {
     //----------------------------------------
     //funciones para botones setGame
     function survival() {
-        return alert('Modo de juego no disponible')
-        // dispatch(setGameState('survival'))
+        // return alert('Modo de juego no disponible')
+        dispatch(setGameState('survival'))
     }
     function timer() {
         dispatch(setGameState('timer'))
@@ -54,6 +55,69 @@ function Home() {
     //estado del modo de juego
     const gameState = useSelector((state) => state.gameStateReducer.gameState)
     //---------------------------------------- 
+    //actualizar el estilo del boton segun el estado de timer  (modo timer)
+    const [easyStyle, setEasyStyle] = useState('blanchedalmond');
+    const [normalStyle, setNormalStyle] = useState('blanchedalmond');
+    const [hardStyle, setHardStyle] = useState('blanchedalmond');
+
+    if (tiempo === 60 && easyStyle !== 'rgb(255, 186, 82)') {
+        setEasyStyle('rgb(255, 186, 82)');
+    } else if(tiempo !== 60 && easyStyle !== 'blanchedalmond') {
+        setEasyStyle('blanchedalmond')
+    }
+    
+    if (tiempo === 30 && normalStyle !== 'rgb(255, 186, 82)') {
+        setNormalStyle('rgb(255, 186, 82)');
+    } else if(tiempo !== 30 && normalStyle !== 'blanchedalmond'){
+        setNormalStyle('blanchedalmond');
+    }
+
+    if (tiempo === 10 && hardStyle !== 'rgb(255, 186, 82)') {
+        setHardStyle('rgb(255, 186, 82)');
+    } else if(tiempo !== 10 && hardStyle !== 'blanchedalmond') {
+        setHardStyle('blanchedalmond');
+    }
+    //----------------------------------------
+    //actualizar el style del boton segun el estado de la dificultad (modo survival)
+    const diff = useSelector((state) => state.diffReducer.diffSegs)
+    const [easySurviStyle, setEasySurviStyle] = useState('blanchedalmond');
+    const [normaSurvilStyle, setNormalSurviStyle] = useState('blanchedalmond');
+    const [hardSurviStyle, setHardSurviStyle] = useState('blanchedalmond');
+
+    if (diff === 2000 && easySurviStyle !== 'rgb(255, 186, 82)') {
+        setEasySurviStyle('rgb(255, 186, 82)');
+    } else if (diff !== 2000 && easySurviStyle !== 'blanchedalmond') {
+        setEasySurviStyle('blanchedalmond')
+    }
+    
+    if (diff === 1000 && normaSurvilStyle !== 'rgb(255, 186, 82)') {
+        setNormalSurviStyle('rgb(255, 186, 82)');
+    } else if(diff !== 1000 && normaSurvilStyle !== 'blanchedalmond'){
+        setNormalSurviStyle('blanchedalmond');
+    }
+
+    if (diff === 500 && hardSurviStyle !== 'rgb(255, 186, 82)') {
+        setHardSurviStyle('rgb(255, 186, 82)');
+    } else if(diff !== 500 && hardSurviStyle !== 'blanchedalmond') {
+        setHardSurviStyle('blanchedalmond');
+    }
+    //----------------------------------------
+    //actualizar el style del boton segun el estado del gamestate 
+    const [timerStyle, setTimerStyle] = useState()//'#efefef'
+    const [survivalStyle, setSurvivalStyle] = useState()//rgb(248, 246, 131)
+
+    if (gameState === 'survival' && survivalStyle !== 'rgb(248, 246, 131)') {
+        setSurvivalStyle('rgb(248, 246, 131)')
+    } else if (gameState !== 'survival' && survivalStyle !== '#efefef') {
+        setSurvivalStyle('#efefef')
+    }
+
+    if (gameState === 'timer' && timerStyle !== 'rgb(248, 246, 131)') {
+        setTimerStyle('rgb(248, 246, 131)')
+    } else if (gameState !== 'timer' && timerStyle !== '#efefef') {
+        setTimerStyle('#efefef')
+    }
+    //----------------------------------------
     return (
         <div className={s.tMainContainer}>
             <span className={s.uMainContainer}>
@@ -76,8 +140,8 @@ function Home() {
 
                             <span className={s.gGameModeButtonsContainer}>
                                 <span className={s.gGameModeButtons}>
-                                    <button className={s.gameModeBtns} onClick={() => survival()}>Survival</button>
-                                    <button className={s.gameModeBtns} onClick={() => timer()}>Timer</button>
+                                    <button className={s.gameModeBtns} onClick={() => survival()} style={{background: survivalStyle}}>Survival</button>
+                                    <button className={s.gameModeBtns} onClick={() => timer()} style={{background: timerStyle}}>Timer</button>
                                 </span>
                             </span>
 
@@ -85,11 +149,21 @@ function Home() {
 
                         <span className={s.yDiffButtonsContainer}>
 
-                            <span className={s.gDiffButtons}>
-                                <button className={s.botones} onClick={() => easy()} id='easyButton'>Easy</button>
-                                <button className={s.botones} onClick={() => normal()} id='normalButton'>Normal</button>
-                                <button className={s.botones} onClick={() => hard()} id='hardButton'>Hard</button>
-                            </span>
+                            {gameState === 'timer' ?
+                                <span className={s.gTimerDiffButtons}>
+                                    <button className={s.botones} onClick={() => easy() }id='easyButton' style={{background: easyStyle}}>Easy</button>
+                                    <button className={s.botones} onClick={() => normal() } id='normalButton' style={{background: normalStyle}}>Normal</button>
+                                    <button className={s.botones} onClick={() => hard()} id='hardButton' style={{background: hardStyle}}>Hard</button>
+                                </span>:<span></span>
+                            }
+
+                            {gameState === 'survival' ?
+                                <span className={s.gSurvivalDiffButtons}>
+                                    <button className={s.botones} onClick={() => easy() }id='easyButton' style={{background: easySurviStyle}}>Easy(2s)</button>
+                                    <button className={s.botones} onClick={() => normal() } id='normalButton' style={{background: normaSurvilStyle}}>Normal(1s)</button>
+                                    <button className={s.botones} onClick={() => hard()} id='hardButton' style={{background: hardSurviStyle}}>Hard(0.5s)</button>
+                                </span>:<span></span>
+                            }
 
                         </span>
 

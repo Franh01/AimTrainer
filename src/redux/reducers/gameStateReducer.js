@@ -1,7 +1,7 @@
 import {SET_GAME_STATE} from '../actions/actionTypes'
 
 const initial_state = {
-    gameState: 'timer'
+    gameState: ''
 };
 
 const gameStatus = (state = initial_state, action) => {
