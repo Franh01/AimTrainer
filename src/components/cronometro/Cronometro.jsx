@@ -1,8 +1,17 @@
 import { useSelector } from "react-redux";
 import s from './Cronometro.module.css'
+import { useState } from "react";
 
 
 function Cronometro() {
+    //switch colors
+    const switchColors = useSelector((state) => state.switchReducer.theme);
+    const [colorSwitch, setColorSwitch] = useState('white');
+    if (switchColors === 'light' && colorSwitch !== 'black') {
+        setColorSwitch('black')
+    } else if (switchColors === 'dark' && colorSwitch !== 'white') {
+        setColorSwitch('white')
+    }
     const tiempo = useSelector((state) => state.timerReducer.tiempo)
     return (
         <div>
@@ -11,7 +20,7 @@ function Cronometro() {
                                 marginTop: '39px',
                                 marginLeft: '12px',
                                 position: 'absolute',
-                                color: '#00ad31'
+                                color: colorSwitch
             }} className={s.cronometro}>{tiempo}</h1>
         </div>
     )

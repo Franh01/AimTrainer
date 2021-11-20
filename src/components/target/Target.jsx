@@ -89,6 +89,15 @@ function Target() {
         clearTimeout(timeOutState)
         clearTimeout(timeOutState2)
     }
+
+    //switch colors
+    const switchColors = useSelector((state) => state.switchReducer.theme);
+    const [colorSwitch, setColorSwitch] = useState('white');
+    if (switchColors === 'light' && colorSwitch !== 'black') {
+        setColorSwitch('black')
+    } else if (switchColors === 'dark' && colorSwitch !== 'white') {
+        setColorSwitch('white')
+    }
     
         return (
             <div>
@@ -133,7 +142,7 @@ function Target() {
                                 style={{marginTop: '150px'}}
                             >
                                 <span>
-                                    <h1 className={s.startBtn}>START</h1>
+                                    <h1 className={s.startBtn} style={{color: colorSwitch}}>START</h1>
                                 </span>
                                 <button className={s.playBtn} onClick={() => targetPlay()}>
                                     <span className={s.target}>
