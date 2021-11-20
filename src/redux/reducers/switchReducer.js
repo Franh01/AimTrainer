@@ -8,7 +8,7 @@ const switchReducer = (state = initial_state, action) => {
     switch (action.type) {
         case SET_SWITCH_STATE:
             return {
-                diffSegs: action.payload
+                theme: action.payload
             }
         default:
             return state;

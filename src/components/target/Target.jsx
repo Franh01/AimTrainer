@@ -88,10 +88,6 @@ function Target() {
         clearInterval(intervalState)
         clearTimeout(timeOutState)
         clearTimeout(timeOutState2)
-        // setTimeout(() => {
-        //     window.location.reload()
-        // }, 500);
-        
     }
     
         return (
@@ -133,18 +129,12 @@ function Target() {
                         
                         ://status 3 default //targetplay------------------
                         <span className={s.gameOverContainer}>
-                            <span>
-                                <span
-                                    style={{
-                                        position: 'absolute',
-                                        marginLeft: '78px',
-                                        marginTop: '-20px'
-                                    }}
-                                >
-                                    
-                                </span>
+                            <span
+                                style={{marginTop: '150px'}}
+                            >
                                 <span>
-                                <h1 className={s.startBtn}>START</h1></span>
+                                    <h1 className={s.startBtn}>START</h1>
+                                </span>
                                 <button className={s.playBtn} onClick={() => targetPlay()}>
                                     <span className={s.target}>
                                         <span className={s.shadow}></span>

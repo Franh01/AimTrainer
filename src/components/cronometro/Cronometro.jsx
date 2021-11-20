@@ -10,7 +10,9 @@ function Cronometro() {
                                 userSelect: 'none',
                                 marginTop: '39px',
                                 marginLeft: '12px',
-                                position: 'absolute'}} className={s.cronometro}>{tiempo}</h1>
+                                position: 'absolute',
+                                color: '#00ad31'
+            }} className={s.cronometro}>{tiempo}</h1>
         </div>
     )
 }

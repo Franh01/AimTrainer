@@ -68,7 +68,13 @@ function Target() {
         dispatch(diffButtonAction(diff))
     }
     //switch colors
-    // const switchColors = useSelector((state) => state.switchReducer.theme)  undefined????
+    const switchColors = useSelector((state) => state.switchReducer.theme);
+    const [colorSwitch, setColorSwitch] = useState('white');
+    if (switchColors === 'light' && colorSwitch !== 'black') {
+        setColorSwitch('black')
+    } else if (switchColors === 'dark' && colorSwitch !== 'white') {
+        setColorSwitch('white')
+    }
     
         return (
             <div>
@@ -76,9 +82,9 @@ function Target() {
                     <Link to='/'><button className={s.homeBtn} onClick={() => toHome()}>Home</button></Link>
                     <h1 style={{
                         position: 'absolute',
-                        marginLeft: '20px',
-                        marginTop: '40px',
-                        color: '#00ad31'
+                        marginLeft: '5px',
+                        marginTop: '39px',
+                        color: colorSwitch
                     }}>{contadorReducer}</h1>
                 </span>
                 {targetStatus === 1?
@@ -114,18 +120,14 @@ function Target() {
                         
                         ://status 3 default //targetplay------------------
                         <span className={s.gameOverContainer}>
-                            <span>
-                                <span
-                                    style={{
-                                        position: 'absolute',
-                                        marginLeft: '78px',
-                                        marginTop: '-20px'
-                                    }}
-                                >
-                                    
-                                </span>
+                            <span
+                                style={{marginTop: '150px'}}
+                            >
                                 <span>
-                                <h1 className={s.startBtn}>START</h1></span>
+                                    <h1 className={s.startBtn}
+                                        style={{color: colorSwitch}}
+                                    >START</h1>
+                                </span>
                                 <button className={s.playBtn} onClick={() => targetPlay()}>
                                     <span className={s.target}>
                                         <span className={s.shadow}></span>
