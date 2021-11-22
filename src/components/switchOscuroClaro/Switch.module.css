@@ -4,8 +4,13 @@
     width: 60px;
     height: 34px;
     border-radius: 34px;
-    margin-left: 1820px;
-    margin-top: 5px;
+    /* margin-left: 1820px;
+    margin-top: 5px; */
+  }
+
+  .flexBoxSwitch{
+    display: flex;
+    justify-content: flex-end;
   }
   
   .switch input {

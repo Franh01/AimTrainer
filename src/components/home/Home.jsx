@@ -44,9 +44,11 @@ function Home() {
     function survival() {
         // return alert('Modo de juego no disponible')
         dispatch(setGameState('survival'))
+        dispatch(diffButtonAction(2000))
     }
     function timer() {
         dispatch(setGameState('timer'))
+        dispatch(diffButtonAction(60000))
     }
     //----------------------------------------
     //estado del timer------------------------
@@ -117,13 +119,14 @@ function Home() {
     } else if (gameState !== 'timer' && timerStyle !== '#efefef') {
         setTimerStyle('#efefef')
     }
-    //----------------------------------------
+    //----------------------------------------    
     return (
         <div className={s.tMainContainer}>
             <span className={s.uMainContainer}>
                 <span className={s.realMainContainer}>
                     <span className={s.rMainContainer}>
 
+                        
                         <span className={s.yTitleContainer}>
 
                             <span className={s.gTitle} id='title'>
@@ -198,9 +201,15 @@ function Home() {
                         
                     </span>
                         <span className={s.yLinksContainer}>
+                            
 
                             <span className={s.gGitHub}>
                                 <a href='https://github.com/Franh01' target='_blank' rel='noreferrer'><img src={gitImg} className={s.gitHub} alt='github-img'/></a>
+                            </span>
+                            <span className={s.aboutContainer}>
+                                <a href='https://github.com/Franh01/AimTrainer/blob/main/README.md' target='_blank' rel='noreferrer' className={s.about}>
+                                    <h3>About</h3>
+                                </a>
                             </span>
                             
                         </span>

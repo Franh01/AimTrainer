@@ -1,13 +1,20 @@
-.tMainContainer {
+
+.realMainContainer {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column;
 }
+
+/* .rSwitchContainer{
+  display: flex;
+  justify-content: flex-end;
+  margin: 0px 75px;
+} */
+
+
 
 .uMainContainer {
   display: flex;
   justify-content: center;
-  margin: 101px 0px;
 }
 
 .rMainContainer {
@@ -23,6 +30,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 300px;
+  margin-top: 80px;
 }
 
 .yTitleContainer {
@@ -83,7 +91,28 @@
 
 .yLinksContainer {
   margin: -52px 17px;
-  position: absolute;
+  display: flex;
+  justify-content: space-between;
+}
+
+.about:link {
+  text-decoration: none;
+  color: white;
+}
+
+.about:visited {
+  text-decoration: none;
+  color: white;
+}
+
+.about:hover {
+  text-decoration: underline;
+  color: white;
+}
+
+.about:active {
+  text-decoration: underline;
+  color: white;
 }
 
 

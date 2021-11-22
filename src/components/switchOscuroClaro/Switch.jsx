@@ -6,8 +6,7 @@ import s from './Switch.module.css'
 export default function Switch() {
     let body = document.body
 
-    const switchTheme = useSelector((state) => state.switchReducer.theme)
-    console.log(switchTheme);
+    const switchTheme = useSelector((state) => state.switchReducer.theme);
     const dispatch = useDispatch();//setSwitchState()
     function modoOsc() {        
         if (switchTheme === 'light') {
@@ -20,10 +19,12 @@ export default function Switch() {
     }
     return (
         <div>
-            <label className={s.switch}>
-                <input type="checkbox" id='switch' onChange={() => modoOsc()}></input>
-                <span className={s.slider}></span>
-            </label>
+            <span className={s.flexBoxSwitch}>
+                <label className={s.switch}>
+                    <input type="checkbox" id='switch' onChange={() => modoOsc()}></input>
+                    <span className={s.slider}></span>
+                </label>
+            </span>
         </div>
     )
 }
