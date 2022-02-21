@@ -1,7 +1,7 @@
 import { SET_SWITCH_STATE } from "../actions/actionTypes";
 
 const initial_state = {
-    theme: 'light'
+    theme: '#f3ecd48f'
 };
 
 const switchReducer = (state = initial_state, action) => {

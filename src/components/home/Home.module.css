@@ -1,17 +1,7 @@
-
 .realMainContainer {
   display: flex;
   flex-direction: column;
 }
-
-/* .rSwitchContainer{
-  display: flex;
-  justify-content: flex-end;
-  margin: 0px 75px;
-} */
-
-
-
 .uMainContainer {
   display: flex;
   justify-content: center;
@@ -20,12 +10,11 @@
 .rMainContainer {
   background-color: #678983;
   padding: 70px;
-  border-radius: 5%;
+  border-radius: 30px;
   color: white;
   border: 1px solid #78a19a;
-  box-shadow: inset 0 -3em 3em #678983,
-      0 0  0 2px #78a19a,
-      0.3em 0.3em 1em #000000;
+  box-shadow: inset 0 -3em 3em #678983, 0 0 0 2px #78a19a,
+    0.3em 0.3em 1em #000000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -115,21 +104,6 @@
   color: white;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 .btn {
   border-radius: 5%;
   padding: 10px 20px;
@@ -140,9 +114,8 @@
   text-align: center;
   font-size: 20px;
   margin-top: 15px;
+  font-family: "Poppins";
 }
-
-
 
 .btn:hover {
   background-color: #394264;
@@ -165,10 +138,14 @@
   cursor: pointer;
   border-radius: 4%;
   min-width: 84px;
+  transition: 200ms;
+  font-family: "Poppins";
 }
 
 .botones:hover {
   background-color: rgb(179, 132, 62);
+  transition: 200ms;
+  transform: scale(1.03);
 }
 
 .botones:focus {
@@ -178,8 +155,12 @@
 
 .gitHub {
   max-width: 40px;
+  transition: 200ms;
 }
-
+.gitHub:hover {
+  transition: 200ms;
+  transform: scale(1.1);
+}
 
 .gameModeBtns {
   padding: 10px 20px;
@@ -187,6 +168,15 @@
   margin: 0px 3px 0px 3px;
   min-width: 84px;
   background-color: #efefef;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: 200ms;
+  font-family: "Poppins";
+}
+.gameModeBtns:hover {
+  transition: 200ms;
+  transform: scale(1.04);
+  background-color: #c9c9c9;
 }
 
 .gameModeBtns:focus {
@@ -195,5 +185,22 @@
   outline: none;
 }
 
+.aboutBtn {
+  background: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.aboutBtn:hover .aboutTxt {
+  color: white;
+  text-decoration: underline;
+}
+.aboutTxt {
+  font-family: "Poppins";
+}
 
-
+.aboutBtn:focus {
+  background: transparent;
+  border: none;
+  outline: none;
+}

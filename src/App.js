@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import Switch from './components/switchOscuroClaro/Switch';
 import SurvivalGameMode from './components/survivalGameMode/SurvivalGameMode';
 import TimerGameMode from './components/timerGameMode/TimerGameMode'
+import { About } from './components/about/About';
 
 
 function App() {
@@ -12,8 +13,9 @@ function App() {
     <div>
     <Switch/>
       <Routes>
-        <Route path='/survival' element={<SurvivalGameMode/>}></Route>
         <Route path='/' element={<Home/>}></Route>
+        <Route path='/about' element={<About/>}></Route>
+        <Route path='/survival' element={<SurvivalGameMode/>}></Route>
         <Route path='/timer' element={<TimerGameMode/>}></Route>
       </Routes>
       </div>

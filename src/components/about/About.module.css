@@ -1,0 +1,46 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.52);
+  width: 100%;
+}
+
+.goBack {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.goBackBtn {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 200ms;
+}
+.goBackBtn:hover {
+  transform: scale(1.1);
+  transition: 200ms;
+}
+
+.aboutDiv {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: left;
+  flex-direction: column;
+  background-color: #678983;
+  max-width: 50%;
+  padding: 50px;
+  color: white;
+  margin-top: 80px;
+  border-radius: 30px;
+  text-align: left;
+  border: 1px solid #78a19a;
+  box-shadow: inset 0 -3em 3em #678983, 0 0 0 2px #78a19a,
+    0.3em 0.3em 1em #000000;
+}
