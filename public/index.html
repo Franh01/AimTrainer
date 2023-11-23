@@ -5,14 +5,40 @@
     <link rel="icon" href="%PUBLIC_URL%/target.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Try to reach the max score!"
-    />
+    <meta name="description" content="Try to reach the max score!" />
     <title>Aim Trainer</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
   </body>
+  <script>
+    window.addEventListener("message", function (event) {
+      if (event.origin !== "https://qawidget.feelsocial.app") {
+        return;
+      }
+
+      if (event.data === "open") {
+        const widget = document.getElementById("widgetIframe");
+        widget.style.height = "100vh";
+      } else if (event.data === "closed") {
+        const widget = document.getElementById("widgetIframe");
+        widget.style.height = "10vh";
+      }
+    });
+  </script>
+  <iframe
+    id="widgetIframe"
+    src="https://qawidget.feelsocial.app"
+    style="
+      position: fixed;
+      bottom: 0;
+      right: 0;
+      height: 10vh;
+      width: 415px;
+      border-radius: 8px 8px 0 0;
+      border: none;
+    "
+  >
+  </iframe>
 </html>
